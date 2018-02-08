@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        {% if result %}
+        <p>
+            <span class="alert-success"> {{ result }} </span>
+        </p>
+        <br>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

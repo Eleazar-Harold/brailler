@@ -3,16 +3,22 @@ from . import AlphaBrailleMapper, BrailleAlphaMapper
 
 CAPITAL = chr(10272)  # ⠠
 NUMBER = chr(10300)  # ⠼
-UNRECOGNIZED = '?'
+UNRECOGNIZED = "?"
 
 
 def trim(word):
     # Remove punctuation around a word.
-    while len(word) is not 0 and word[0] not in BrailleAlphaMapper.letters \
-            and word[0] not in BrailleAlphaMapper.contractions:
+    while (
+        len(word) is not 0
+        and word[0] not in BrailleAlphaMapper.letters
+        and word[0] not in BrailleAlphaMapper.contractions
+    ):
         word = word[1:]
-    while len(word) is not 0 and word[-1] not in BrailleAlphaMapper.letters \
-            and word[-1] not in BrailleAlphaMapper.contractions:
+    while (
+        len(word) is not 0
+        and word[-1] not in BrailleAlphaMapper.letters
+        and word[-1] not in BrailleAlphaMapper.contractions
+    ):
         word = word[:-1]
     return word
 
@@ -40,7 +46,11 @@ def capital_letters_handler(word):
         return word
     result = ""
     for i in range(0, len(word)):
-        if i - 1 >= 0 and word[i - 1] == CAPITAL and word[i] in AlphaBrailleMapper.letters:
+        if (
+            i - 1 >= 0
+            and word[i - 1] == CAPITAL
+            and word[i] in AlphaBrailleMapper.letters
+        ):
             result += word[i].upper()
         elif word[i] != CAPITAL:
             result += word[i]
@@ -77,7 +87,11 @@ def fix_exceptions(string):
     result = ""
     # Decipher whether "⠦" should be "“" or "?".
     for i in range(0, len(string)):
-        if i - 1 >= 0 and string[i] == "“" and string[i - 1] in AlphaBrailleMapper.letters:
+        if (
+            i - 1 >= 0
+            and string[i] == "“"
+            and string[i - 1] in AlphaBrailleMapper.letters
+        ):
             result += "?"
         else:
             result += string[i]
@@ -108,7 +122,8 @@ def translate(string):
 
 
 def build_alpha_word(trimmed_word, shavings, index, alpha):
-    # Translate a trimmed braille word to alphabet based text then re-attach the shavings.
+    # Translate a trimmed braille word to alphabet
+    # based text then re-attach the shavings.
     if shavings == "":
         alpha += word_to_alpha(trimmed_word)
     else:

@@ -3,36 +3,40 @@ from . import AlphaBrailleMapper
 
 class Printer:
     def uppercase_alphabet_utf_codes(self):
-        # Print capital alphabet based letters and their respective UTF codes.
+        # Print capital alphabet based letters and
+        # their respective UTF codes.
         print("UTF Codes for Capital Letters:")
         for i in range(65, 91):
-            print(chr(i), i, end='    ')
+            print(chr(i), i, end="    ")
             if i % 8 == 0:
                 print()
         print()
 
     def lowercase_alphabet_utf_codes(self):
-        # Print alphabet based letters and their respective UTF codes.
+        # Print alphabet based letters and
+        # their respective UTF codes.
         print("UTF Codes for Letters:")
         for i in range(97, 123):
-            print("%c %3d" % (chr(i), i), end='   ')
+            print("%c %3d" % (chr(i), i), end="   ")
             if i % 8 == 0:
                 print()
         print()
 
     def braille_utf_codes(self):
-        # Print all 64 braille combinations and their respective UTF codes.
+        # Print all 64 braille combinations and
+        # their respective UTF codes.
         print("UTF Codes for Braille Symbols:")
         for i in range(10240, 10304):
-            print(chr(i), i, end='  ')
+            print(chr(i), i, end="  ")
             if (i + 1) % 8 == 0:
                 print()
 
     def alphabet(self):
-        # Print the English alphabet with their respective Braille representations.
+        # Print the English alphabet with their
+        # respective Braille representations.
         print("Letters:")
         for i in range(97, 123):
-            print(chr(i), AlphaBrailleMapper.letters.get(chr(i)), end='   ')
+            print(chr(i), AlphaBrailleMapper.letters.get(chr(i)), end="   ")
             if i % 8 == 0:
                 print()
         print()
@@ -46,8 +50,11 @@ class Printer:
             word_list.append(word)
         word_list.sort()
         for word in word_list:
-            formatted = '{:<10}'.format(word)
-            print("%c %10s" % (AlphaBrailleMapper.contractions.get(word), formatted), end="")
+            formatted = "{:<10}".format(word)
+            print(
+                "%c %10s" % (AlphaBrailleMapper.contractions.get(word), formatted),
+                end="",
+            )
             count += 1
             if count % 5 == 0:
                 print()
@@ -83,7 +90,8 @@ class Printer:
         print()
 
     def all_utf_codes(self):
-        # Print the UTF codes for both lowercase and uppercase letters and for Braille symbols.
+        # Print the UTF codes for both lowercase and
+        # uppercase letters and for Braille symbols.
         self.lowercase_alphabet_utf_codes()
         print()
         self.uppercase_alphabet_utf_codes()
@@ -91,7 +99,8 @@ class Printer:
         self.braille_utf_codes()
 
     def all_braille(self):
-        # Print all the Braille symbols and their standard alphabet based representations.
+        # Print all the Braille symbols and their
+        # standard alphabet based representations.
         self.alphabet()
         self.contractions()
         self.punctuation()

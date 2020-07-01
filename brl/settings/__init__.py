@@ -1,7 +1,7 @@
-from .base import *
-from .production import *
+from brl.settings.base import *
+from brl.settings.production import *
 
 try:
-    from .local import *
+    from brl.settings.production import *
 except:
     pass

@@ -14,17 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls.static import static
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
-from .views import ttob_page, btot_page, t2b_print, b2t_print
+
+from .views import b2t_print, btot_page, t2b_print, ttob_page
 
 urlpatterns = [
-    url(r'^$', ttob_page, name='text_to_braille'),
-    url(r'^btt/$', btot_page, name='braille_to_text'),
-    url(r'^pdf_brl/$', t2b_print, name='print_braille'),
-    url(r'^pdf_txt/$', b2t_print, name='print_text'),
-    url(r'^admin/', admin.site.urls),
+    url(r"^$", ttob_page, name="text_to_braille"),
+    url(r"^btt/$", btot_page, name="braille_to_text"),
+    url(r"^pdf_brl/$", t2b_print, name="print_braille"),
+    url(r"^pdf_txt/$", b2t_print, name="print_text"),
+    url(r"^admin/", admin.site.urls),
 ]
 
 if settings.DEBUG:

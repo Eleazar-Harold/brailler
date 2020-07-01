@@ -7,7 +7,7 @@ class T2BForm(forms.Form):
             attrs={
                 "class": "form-control",
                 "id": "message",
-                "placeholder": "Input TEXT here... "
+                "placeholder": "Input TEXT here... ",
             }
         )
     )
@@ -19,7 +19,7 @@ class B2TForm(forms.Form):
             attrs={
                 "class": "form-control",
                 "id": "message",
-                "placeholder": "Input BRAILLE here... "
+                "placeholder": "Input BRAILLE here... ",
             }
         )
     )

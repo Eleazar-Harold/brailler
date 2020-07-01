@@ -1,5 +1,4 @@
-
-from . import brailleTotext, textTobraille
+from brl import brailleTotext, textTobraille
 
 
 class BrCnvx:
@@ -7,18 +6,22 @@ class BrCnvx:
         self.val = val
         self.filename = filename
 
-    def user_braille(self):
-        return brailleTotext.translate(self.val)
+    @classmethod
+    def user_braille(cls):
+        return brailleTotext.translate(cls.val)
 
-    def user_text(self):
-        return textTobraille.translate(self.val)
+    @classmethod
+    def user_text(cls):
+        return textTobraille.translate(cls.val)
 
-    def open_braille(self):
-        file = open(self.filename)
+    @classmethod
+    def open_braille(cls):
+        file = open(cls.filename)
         content = file.read()
         return brailleTotext.translate(content)
 
-    def open_text(self):
-        file = open(self.filename)
+    @classmethod
+    def open_text(cls):
+        file = open(cls.filename)
         content = file.read()
         return textTobraille.translate(content)

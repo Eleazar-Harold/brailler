@@ -2,7 +2,7 @@ from . import AlphaBrailleMapper, BrailleAlphaMapper
 
 CAPITAL = chr(10272)  # ⠠
 NUMBER = chr(10300)  # ⠼
-UNRECOGNIZED = '?'
+UNRECOGNIZED = "?"
 
 # There is no braille symbol for a generic quote (").
 # There is only open quotation (“) and closed quotation (”).
@@ -41,12 +41,14 @@ def is_braille(char):
     # Return true if a char is braille.
     if len(char) > 1:
         return False
-    return char in BrailleAlphaMapper.letters \
-           or char in BrailleAlphaMapper.numbers \
-           or char in BrailleAlphaMapper.punctuation \
-           or char in BrailleAlphaMapper.contractions \
-           or char == CAPITAL \
-           or char == NUMBER
+    return (
+        char in BrailleAlphaMapper.letters
+        or char in BrailleAlphaMapper.numbers
+        or char in BrailleAlphaMapper.punctuation
+        or char in BrailleAlphaMapper.contractions
+        or char == CAPITAL
+        or char == NUMBER
+    )
 
 
 def find_utf_code(char):
@@ -64,7 +66,7 @@ def char_to_braille(char):
         return char
     elif char == "\n":
         return "\n"
-    elif char == "\"":
+    elif char == '"':
         global open_quotes
         if open_quotes:
             open_quotes = not open_quotes
